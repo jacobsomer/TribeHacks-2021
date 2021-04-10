@@ -8,9 +8,9 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-
 import Typography from '@material-ui/core/Typography';
-
+import Button from '@material-ui/core/Button';
+import axios from "axios";
 
 import './App.css';
 const drawerWidth = 240;
@@ -97,15 +97,33 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const [content, setContent] = useState("");
   const [country, setCountry] = useState("");
-  const classes = useStyles();
 
+  // store
+  const [title, setTitle] = useState([{title:"Hello"}]);
+ 
+  const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+  
+  //get from API Demo
+  const refreshList = () => {
+    axios
+      .get("/api/todos/")
+      .then((res) => setTitle(res.data))
+      .catch((err) => console.log(err));
+  };
+
+
   return (
     <>
     
     <div className="App">
       <ButtonAppBar>
       </ButtonAppBar>
+
+      <Button variant="contained" color="primary" onClick={refreshList} disableElevation>
+        Disable elevation {title[0].description}
+      </Button>
+      
       <main >
         <div />
         <Container maxWidth="lg" className={classes.container}>
@@ -122,7 +140,7 @@ function App() {
             {/* Recent Deposits */}
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
-                hello2
+                Hello
               </Paper>
             </Grid>
             {/* Recent Orders */}
