@@ -18,10 +18,15 @@ from django.urls import path, include
 from rest_framework import routers
 from worldly import views
 
+from wikipedia import views as view1
+
 router = routers.DefaultRouter()
 router.register(r'todos', views.TodoView, 'worldly')
+
+# router.register(r'wiki', view1.WikiView, 'wikipedia')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/wikipedia/', view1.WikiView.as_view(),name="wikipedia"),
 ]
