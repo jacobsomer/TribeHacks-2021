@@ -1,0 +1,32 @@
+.App{
+  background-color:	#FFFAFA;
+  height:100vh;
+
+}
+@media (prefers-reduced-motion: no-preference) {
+  #Country {
+    animation: colorChange infinite 5s linear;
+    animation-delay: -1.25s;
+    
+  }
+}
+
+
+@keyframes colorChange {
+  0%{
+    color:#757ce8;
+  }
+  25%{
+    color:#3f50b5;
+  }
+  50%{
+    color:#f44336;
+  }
+  75%{
+    color:#ff7961;
+  }
+  100%{
+    color:#ba000d;
+  }
+  
+}
