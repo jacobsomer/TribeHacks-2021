@@ -19,7 +19,7 @@ const rounded = num => {
   }
 };
 
-const Map = ({ setTooltipContent,setCurrentCountry }) => {
+const Map = ({ setTooltipContent,setCurrentCountry, getWikiData }) => {
     const [localCountryName, onChange] = useState("");
   return (
     <>
@@ -39,9 +39,9 @@ const Map = ({ setTooltipContent,setCurrentCountry }) => {
                     setTooltipContent("");
                   }}
                   onClick={() => {
-                    const { NAME, POP_EST } = geo.properties;
-                    onChange(NAME);
-                    setCurrentCountry(NAME);
+                    const { FORMAL_EN } = geo.properties;
+                    onChange(FORMAL_EN);
+                    getWikiData(FORMAL_EN);
                     }}
                   style={{
                     default: {

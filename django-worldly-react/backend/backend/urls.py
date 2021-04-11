@@ -18,7 +18,7 @@ from django.urls import path, include
 from rest_framework import routers
 from worldly import views
 
-from wikipedia import views as view1
+from wiki import views as view1
 
 router = routers.DefaultRouter()
 router.register(r'todos', views.TodoView, 'worldly')
